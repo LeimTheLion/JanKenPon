@@ -4,14 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         const janKenPon = ['Rock', 'Paper', 'Scissors'];
         function computerPlay(janKenPon) {
             return janKenPon[Math.floor(Math.random() * janKenPon.length)];
+        }-->
+    <script>
+        let text;
+        if (Math.random() < 0.33) {
+            text = "Rock"; }
+        else if (Math.random() < 0.66) {
+            text = "Paper"; }
+        else {
+            text = "Scissors";
         }
+        let playerSelection = prompt("Choose your move!");
+        if (playerSelection.toLowerCase() == "rock" && text == 'Paper') {
+                alert("You lose! Paper beats Rock"); }
+        else if (playerSelection.toLowerCase() == "rock" && text == 'Scissors') {
+                alert("You win! Rock beats Scissors");       }    
+        else if (playerSelection.toLowerCase() == "rock" && text == 'Rock') {
+                alert("It's a draw!"); }
+        else if (playerSelection.toLowerCase() == "paper" && text == 'Scissors') {
+                alert("You lose! Scissors beats Paper"); }
+        else if (playerSelection.toLowerCase() == "paper" && text == 'Rock') {
+                alert("You win! Paper beats Rock");             }
+        else if (playerSelection.toLowerCase() == "paper" && text == 'Paper') {
+                alert("It's a draw!"); }
+        else if (playerSelection.toLowerCase() == "scissors" && text == 'Rock') {
+                alert("You lose! Rocks beats Scissors"); }
+        else if (playerSelection.toLowerCase() == "scissors" && text == 'Paper') {
+                alert("You win! Scissors beat Paper");             }
+        else if (playerSelection.toLowerCase() == "scissors" && text == 'Scissors') {
+                alert("It's a draw!"); }
+        else 
+        alert("Hey! Don't mess with me!");
+        
+       
+        
     </script>    
 </body>
 </html>
