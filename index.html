@@ -1,50 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
 </head>
+
 <body>
-    <!-- <script>
-        const janKenPon = ['Rock', 'Paper', 'Scissors'];
-        function computerPlay(janKenPon) {
-            return janKenPon[Math.floor(Math.random() * janKenPon.length)];
-        }-->
     <script>
-        let text;
-        if (Math.random() < 0.33) {
-            text = "Rock"; }
-        else if (Math.random() < 0.66) {
-            text = "Paper"; }
-        else {
-            text = "Scissors";
+        let pcWin = 0;
+        let playerWin = 0;
+
+        function game() {
+
+            let computerPlay;
+            if (Math.random() < 0.33) {
+                computerPlay = "Rock";
+            }
+            else if (Math.random() < 0.66) {
+                computerPlay = "Paper";
+            }
+            else {
+                computerPlay = "Scissors";
+            }
+
+
+
+
+            let playerSelection = prompt("Choose your move!").toLowerCase();
+
+
+            function playRound() {
+                if (playerSelection == "rock" && computerPlay == 'Paper') {
+                    pcWin++;
+                    alert("You lose! Paper beats Rock");
+                }
+                else if (playerSelection == "rock" && computerPlay == 'Scissors') {
+                    playerWin++;
+                    alert("You win! Rock beats Scissors");
+
+                }
+                else if (playerSelection == "rock" && computerPlay == 'Rock') {
+                    alert("It's a draw!");
+                }
+                else if (playerSelection == "paper" && computerPlay == 'Scissors') {
+                    pcWin++;
+                    alert("You lose! Scissors beats Paper");
+
+                }
+                else if (playerSelection == "paper" && computerPlay == 'Rock') {
+                    playerWin++;
+                    alert("You win! Paper beats Rock");
+
+                }
+                else if (playerSelection == "paper" && computerPlay == 'Paper') {
+                    alert("It's a draw!");
+                }
+                else if (playerSelection == "scissors" && computerPlay == 'Rock') {
+                    pcWin++;
+                    alert("You lose! Rocks beats Scissors");
+
+                }
+                else if (playerSelection == "scissors" && computerPlay == 'Paper') {
+                    playerWin++;
+                    alert("You win! Scissors beat Paper");
+
+                }
+                else if (playerSelection == "scissors" && computerPlay == 'Scissors') {
+                    alert("It's a draw!");
+                }
+                else
+                    alert("Hey! Don't mess with me!");
+            }
+
+            playRound();
+            console.log(pcWin);
+            console.log(playerWin);
         }
-        let playerSelection = prompt("Choose your move!");
-        if (playerSelection.toLowerCase() == "rock" && text == 'Paper') {
-                alert("You lose! Paper beats Rock"); }
-        else if (playerSelection.toLowerCase() == "rock" && text == 'Scissors') {
-                alert("You win! Rock beats Scissors");       }    
-        else if (playerSelection.toLowerCase() == "rock" && text == 'Rock') {
-                alert("It's a draw!"); }
-        else if (playerSelection.toLowerCase() == "paper" && text == 'Scissors') {
-                alert("You lose! Scissors beats Paper"); }
-        else if (playerSelection.toLowerCase() == "paper" && text == 'Rock') {
-                alert("You win! Paper beats Rock");             }
-        else if (playerSelection.toLowerCase() == "paper" && text == 'Paper') {
-                alert("It's a draw!"); }
-        else if (playerSelection.toLowerCase() == "scissors" && text == 'Rock') {
-                alert("You lose! Rocks beats Scissors"); }
-        else if (playerSelection.toLowerCase() == "scissors" && text == 'Paper') {
-                alert("You win! Scissors beat Paper");             }
-        else if (playerSelection.toLowerCase() == "scissors" && text == 'Scissors') {
-                alert("It's a draw!"); }
-        else 
-        alert("Hey! Don't mess with me!");
-        
-       
-        
-    </script>    
+
+
+        game();
+        game();
+        game();
+        game();
+        game();
+
+        if (pcWin > playerWin) {
+            alert("Score: " + pcWin + " - " + playerWin + ". I won!");
+        }
+        else if (pcWin == playerWin) {
+            alert("Score: " + pcWin + " - " + playerWin + ". We drew!");
+        }
+        else {
+            alert("Score: " + pcWin + " - " + playerWin + ". You won!");
+        }
+    </script>
 </body>
+
 </html>
