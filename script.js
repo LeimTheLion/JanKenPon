@@ -1,81 +1,71 @@
 let pcWin = 0;
 let playerWin = 0;
 let draws = 0;
+let computerPlay;
+let playerSelection;
 
-function game() {
 
-    let computerPlay;
-    if (Math.random() < 0.33) {
-        computerPlay = "Rock";
-    }
-    else if (Math.random() < 0.66) {
-        computerPlay = "Paper";
-    }
-    else {
-        computerPlay = "Scissors";
-    }
-
-    let playerSelection = prompt("Choose your move!").toLowerCase();
-
-    function playRound() {
-        if (playerSelection == "rock" && computerPlay == 'Paper') {
-            pcWin++;
-            alert("I chose Paper, so you lose! Paper beats Rock");
-        }
-        else if (playerSelection == "rock" && computerPlay == 'Scissors') {
-            playerWin++;
-            alert("I chose Scissors, so you win! Rock beats Scissors");
-        }
-        else if (playerSelection == "rock" && computerPlay == 'Rock') {
-            draws++;
-            alert("I chose Rock too, so it's a draw!");
-        }
-        else if (playerSelection == "paper" && computerPlay == 'Scissors') {
-            pcWin++;
-            alert("I chose Scissors, so you lose! Scissors beats Paper");
-        }
-        else if (playerSelection == "paper" && computerPlay == 'Rock') {
-            playerWin++;
-            alert("I chose Rock, so you win! Paper beats Rock");
-        }
-        else if (playerSelection == "paper" && computerPlay == 'Paper') {
-            draws++;
-            alert("I chose Paper too, so it's a draw!");
-        }
-        else if (playerSelection == "scissors" && computerPlay == 'Rock') {
-            pcWin++;
-            alert("I chose Rock, so you lose! Rock beats Scissors");
-        }
-        else if (playerSelection == "scissors" && computerPlay == 'Paper') {
-            playerWin++;
-            alert("I chose Paper, so you win! Scissors beat Paper");
-        }
-        else if (playerSelection == "scissors" && computerPlay == 'Scissors') {
-            draws++;
-            alert("I chose Scissors too, so it's a draw!");
-        }
-        else
-            alert("Hey! Don't mess with me!");
-    }
-
-    playRound();
-    console.log(pcWin);
-    console.log(playerWin);
-    console.log(draws);
+if (Math.random() < 0.33) {
+    computerPlay = "Rock";
 }
-
-game();
-game();
-game();
-game();
-game();
-
-if (pcWin > playerWin) {
-    alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". I won!");
-}
-else if (pcWin == playerWin) {
-    alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". We drew!");
+else if (Math.random() < 0.66) {
+    computerPlay = "Paper";
 }
 else {
-    alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". You won!");
+    computerPlay = "Scissors";
 }
+
+const rock = document.querySelector('.rock');
+rock.onclick = () => {
+    playerSelection = "Rock";
+    const choices = document.querySelector('.choices');
+    const results = document.createElement('p');
+    results.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
+    choices.appendChild(results);
+    playRound();
+}
+const paper = document.querySelector('.paper');
+paper.onclick = () => {
+    playerSelection = "Paper";
+    const choices = document.querySelector('.choices');
+    const results = document.createElement('p');
+    results.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
+    choices.appendChild(results);
+}
+const scissors = document.querySelector('.scissors');
+scissors.onclick = () => {
+    playerSelection = "Scissors";
+    const choices = document.querySelector('.choices');
+    const results = document.createElement('p');
+    results.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
+    choices.appendChild(results);
+}
+
+function playRound() {
+    if (playerSelection == "Rock" && computerPlay == 'Paper') {
+        pcWin++;
+        const matchResults = document.querySelector('.matchResults');
+        const results = document.createElement('p');
+        results.textContent = "You lost!";
+        matchResults.appendChild(results);
+        const playerScore = document.querySelector('.playerScore');
+        const newPScore = document.createElement('p');
+        newPScore.textContent = playerWin;
+        playerScore.appendChild(newPScore);
+        const pcScore = document.querySelector('.pcScore');
+        const newCScore = document.createElement('p');
+        newCScore.textContent = pcWin;
+        pcScore.appendChild(newCScore);
+    }
+}
+
+
+
+
+
+//if (pcWin > playerWin) {
+    // alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". I won!");}
+//else if (pcWin == playerWin) {
+    //  alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". We drew!");}
+//else {
+    // alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". You won!");}
