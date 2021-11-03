@@ -165,3 +165,7 @@ function roundFive() {
         }
     }
 }
+const restart = document.querySelector('.restart');
+restart.onclick = () => {
+    window.location.reload();
+}
