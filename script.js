@@ -3,9 +3,31 @@ let playerWin = 0;
 let draws = 0;
 let computerPlay;
 let playerSelection;
-let round = 0;
+//let round = 4;
 
-function game() {
+const plpcChoices = document.querySelector('.toCancel');
+const bothChoices = document.createElement('p');
+plpcChoices.appendChild(bothChoices);
+
+const matchResults = document.querySelector('.toCancel');
+const results = document.createElement('p');
+matchResults.appendChild(results);
+
+const playerScore = document.querySelector('.playerScore');
+const newPScore = document.createElement('p');
+
+playerScore.appendChild(newPScore);
+const pcScore = document.querySelector('.pcScore');
+const newCScore = document.createElement('p');
+
+pcScore.appendChild(newCScore);
+const drawsWin = document.querySelector('.draws');
+const drawsNo = document.createElement('p');
+
+drawsWin.appendChild(drawsNo);
+
+
+
 if (Math.random() < 0.33) {
     computerPlay = "Rock";
 }
@@ -16,17 +38,20 @@ else {
     computerPlay = "Scissors";
 }
 
+function choices() {
+    document.querySelector('.toCancel');
+    bothChoices.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
+}
+
 const rock = document.querySelector('.rock');
 rock.onclick = () => {
     document.querySelector('.rock').disabled = true;
     document.querySelector('.paper').disabled = true;
     document.querySelector('.scissors').disabled = true;
     playerSelection = "Rock";
-    const choices = document.querySelector('.choices');
-    const results = document.createElement('p');
-    results.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
-    choices.appendChild(results);
+    choices();
     playRound();
+    roundFive();
 }
 const paper = document.querySelector('.paper');
 paper.onclick = () => {
@@ -34,11 +59,9 @@ paper.onclick = () => {
     document.querySelector('.paper').disabled = true;
     document.querySelector('.scissors').disabled = true;
     playerSelection = "Paper";
-    const choices = document.querySelector('.choices');
-    const results = document.createElement('p');
-    results.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
-    choices.appendChild(results);
+    choices();
     playRound();
+    roundFive();
 }
 const scissors = document.querySelector('.scissors');
 scissors.onclick = () => {
@@ -46,194 +69,99 @@ scissors.onclick = () => {
     document.querySelector('.paper').disabled = true;
     document.querySelector('.scissors').disabled = true;
     playerSelection = "Scissors";
-    const choices = document.querySelector('.choices');
-    const results = document.createElement('p');
-    results.textContent = "You chose: " + playerSelection + ". The computer chose: " + computerPlay + ".";
-    choices.appendChild(results);
+    choices();
     playRound();
+    roundFive();
 }
 
 function playRound() {
     if (playerSelection == "Rock" && computerPlay == 'Paper') {
         pcWin++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "You lost!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Rock" && computerPlay == 'Scissors') {
         playerWin++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "You won!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Paper" && computerPlay == 'Scissors') {
         pcWin++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "You lost!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Paper" && computerPlay == 'Rock') {
         playerWin++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "You won!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Scissors" && computerPlay == 'Rock') {
         pcWin++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "You lost!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Scissors" && computerPlay == 'Paper') {
         playerWin++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "You won!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Rock" && computerPlay == 'Rock') {
         draws++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "It's a draw!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Paper" && computerPlay == 'Paper') {
         draws++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "It's a draw!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
     else if (playerSelection == "Scissors" && computerPlay == 'Scissors') {
         draws++;
-        const matchResults = document.querySelector('.matchResults');
-        const results = document.createElement('p');
+        document.querySelector('.toCancel');
         results.textContent = "It's a draw!";
-        matchResults.appendChild(results);
-        const playerScore = document.querySelector('.playerScore');
-        const newPScore = document.createElement('p');
-        newPScore.textContent = playerWin;
-        playerScore.appendChild(newPScore);
-        const pcScore = document.querySelector('.pcScore');
-        const newCScore = document.createElement('p');
-        newCScore.textContent = pcWin;
-        pcScore.appendChild(newCScore);
-        const drawsWin = document.querySelector('.draws');
-        const drawsNo = document.createElement('p');
-        drawsNo.textContent = draws;
-        drawsWin.appendChild(drawsNo);
+        updateScore();
     }
 }
+
+function updateScore() {
+    document.querySelector('.playerScore');
+    newPScore.textContent = playerWin;
+    document.querySelector('.pcScore');
+    newCScore.textContent = pcWin;
+    document.querySelector('.draws');
+    drawsNo.textContent = draws;
 }
-game();
 
 
-
-//if (pcWin > playerWin) {
-    // alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". I won!");}
-//else if (pcWin == playerWin) {
-    //  alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". We drew!");}
-//else {
-    // alert("My score: " + pcWin + ". Your score: " + playerWin + ". Draws: " + draws + ". You won!");}
+const next = document.querySelector('.next');
+next.onclick = () => {
+    document.querySelector('.rock').disabled = false;
+    document.querySelector('.paper').disabled = false;
+    document.querySelector('.scissors').disabled = false;
+    document.querySelector('.toCancel');
+    results.textContent = "";
+    document.querySelector('.toCancel');
+    bothChoices.textContent = "";
+}
+function roundFive() {
+    if (pcWin + playerWin + draws == 5) {
+        const fifthRound = document.querySelector('.fifthRound');
+        const end = document.createElement('p');
+        fifthRound.appendChild(end);
+        document.querySelector('.next').disabled = true;
+        if (pcWin > playerWin) {
+            end.textContent = "The computer won. You can do better next time!";
+        }
+        else if (playerWin > pcWin) {
+            end.textContent = "You won! Congratulations!"
+        }
+    }
+}
