@@ -3,7 +3,6 @@ let playerWin = 0;
 let draws = 0;
 let computerPlay;
 let playerSelection;
-//let round = 4;
 
 const plpcChoices = document.querySelector('.toCancel');
 const bothChoices = document.createElement('p');
@@ -15,27 +14,26 @@ matchResults.appendChild(results);
 
 const playerScore = document.querySelector('.playerScore');
 const newPScore = document.createElement('p');
-
 playerScore.appendChild(newPScore);
+
 const pcScore = document.querySelector('.pcScore');
 const newCScore = document.createElement('p');
-
 pcScore.appendChild(newCScore);
+
 const drawsWin = document.querySelector('.draws');
 const drawsNo = document.createElement('p');
-
 drawsWin.appendChild(drawsNo);
 
-
-
-if (Math.random() < 0.33) {
-    computerPlay = "Rock";
-}
-else if (Math.random() < 0.66) {
-    computerPlay = "Paper";
-}
-else {
-    computerPlay = "Scissors";
+function pcPlay() {
+    if (Math.random() < 0.33) {
+        computerPlay = "Rock";
+    }
+    else if (Math.random() < 0.66) {
+        computerPlay = "Paper";
+    }
+    else {
+        computerPlay = "Scissors";
+    }
 }
 
 function choices() {
@@ -49,6 +47,7 @@ rock.onclick = () => {
     document.querySelector('.paper').disabled = true;
     document.querySelector('.scissors').disabled = true;
     playerSelection = "Rock";
+    pcPlay();
     choices();
     playRound();
     roundFive();
@@ -59,6 +58,7 @@ paper.onclick = () => {
     document.querySelector('.paper').disabled = true;
     document.querySelector('.scissors').disabled = true;
     playerSelection = "Paper";
+    pcPlay();
     choices();
     playRound();
     roundFive();
@@ -69,6 +69,7 @@ scissors.onclick = () => {
     document.querySelector('.paper').disabled = true;
     document.querySelector('.scissors').disabled = true;
     playerSelection = "Scissors";
+    pcPlay();
     choices();
     playRound();
     roundFive();
@@ -140,7 +141,6 @@ function updateScore() {
     drawsNo.textContent = draws;
 }
 
-
 const next = document.querySelector('.next');
 next.onclick = () => {
     document.querySelector('.rock').disabled = false;
@@ -151,6 +151,7 @@ next.onclick = () => {
     document.querySelector('.toCancel');
     bothChoices.textContent = "";
 }
+
 function roundFive() {
     if (pcWin + playerWin + draws == 5) {
         const fifthRound = document.querySelector('.fifthRound');
@@ -163,8 +164,12 @@ function roundFive() {
         else if (playerWin > pcWin) {
             end.textContent = "You won! Congratulations!"
         }
+        else if (playerWin == pcWin) {
+            end.textContent = "You drew! Congratulations to both of you."
+        }
     }
 }
+
 const restart = document.querySelector('.restart');
 restart.onclick = () => {
     window.location.reload();
