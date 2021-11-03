@@ -3,12 +3,17 @@ body {
     display: flex;
     flex-direction: column;
     background-color: rgb(215, 164, 245);
+    margin: 0px;
+    color:rgb(13, 1, 27)
 }
 
 h1 {
     display: flex;
     justify-content: center;
-    color: rgb(30, 3, 66);
+    color: rgb(241, 229, 248);
+    background-color:rgb(96, 10, 117);
+    padding: 10px;
+    margin-top: 0px;
 }
 
 .mainArea {
@@ -47,8 +52,28 @@ h1 {
 button {
     padding: 5px;
     border-radius: 8px;
+    border: 2px solid rgb(30, 3, 66);
+    background-color:rgb(241, 229, 248);
 }
 
 .next, .restart {
     width: 150px;
+}
+
+.restart {
+    background-color: rgb(30, 3, 66);
+    color:rgb(215, 164, 245)
+}
+
+.toCancel {
+    color: rgb(13, 1, 27);
+}
+
+.choose, .scoreTitle {
+    font-weight: 700;
+    color:rgb(195, 15, 240);
+}
+
+.playerScore, .pcScore, .draws {
+    height: 100px;
 }

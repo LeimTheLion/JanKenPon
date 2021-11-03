@@ -6,6 +6,7 @@ let playerSelection;
 
 const plpcChoices = document.querySelector('.toCancel');
 const bothChoices = document.createElement('p');
+bothChoices.style.fontWeight = 700;
 plpcChoices.appendChild(bothChoices);
 
 const matchResults = document.querySelector('.toCancel');
@@ -14,14 +15,17 @@ matchResults.appendChild(results);
 
 const playerScore = document.querySelector('.playerScore');
 const newPScore = document.createElement('p');
+newPScore.style.fontWeight = 700;
 playerScore.appendChild(newPScore);
 
 const pcScore = document.querySelector('.pcScore');
 const newCScore = document.createElement('p');
+newCScore.style.fontWeight = 700;
 pcScore.appendChild(newCScore);
 
 const drawsWin = document.querySelector('.draws');
 const drawsNo = document.createElement('p');
+drawsNo.style.fontWeight = 700;
 drawsWin.appendChild(drawsNo);
 
 function pcPlay() {
@@ -157,6 +161,8 @@ function roundFive() {
         const fifthRound = document.querySelector('.fifthRound');
         const end = document.createElement('p');
         fifthRound.appendChild(end);
+        end.style.fontWeight = 700;
+        end.style.fontSize = '32px';
         document.querySelector('.next').disabled = true;
         if (pcWin > playerWin) {
             end.textContent = "The computer won. You can do better next time!";
